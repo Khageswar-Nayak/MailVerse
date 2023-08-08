@@ -5,6 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./Store/Store";
+import { authActions } from "../src/Store/Auth-slice";
+const storedIdToken = localStorage.getItem("idToken");
+const storedEmail = localStorage.getItem("email");
+
+// Dispatch login action if data is present
+if (storedIdToken && storedEmail) {
+  store.dispatch(
+    authActions.login({ idToken: storedIdToken, email: storedEmail })
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

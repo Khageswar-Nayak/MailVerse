@@ -1,0 +1,63 @@
+.receiveEmails {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid whitesmoke;
+  padding: 0px 10px;
+  height: 40px;
+}
+
+.receiveEmails:hover {
+  box-shadow: 2px 2px 3px gray;
+  cursor: pointer;
+}
+
+.receiveEmails-left {
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  flex: 20%;
+}
+
+.receiveEmails-left svg {
+  font-size: 18px;
+  margin-right: 10px;
+}
+.receiveEmails-middle-msg {
+  display: flex;
+  width: 90%;
+}
+.receiveEmails-middle {
+  display: flex;
+  align-items: center;
+  flex: 90%;
+}
+
+.receiveEmails-middle svg {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.receiveEmails-middle-msg {
+  display: flex;
+  width: 90%;
+}
+
+.receiveEmails-middle p {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0px 20px;
+  max-width: 550px;
+}
+
+.receiveEmails-right {
+  display: flex;
+  align-items: center;
+  flex: 13%;
+  justify-content: flex-end;
+}
+
+.receiveEmails-right p {
+  font-size: 15px;
+}

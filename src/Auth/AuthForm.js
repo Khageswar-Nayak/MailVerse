@@ -15,7 +15,6 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material"; // Import the icons for the eye toggle
 
 const LoginForm = () => {
-  //   const [isLogin, setIsLogin] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -25,7 +24,6 @@ const LoginForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const toggleForm = () => {
-    // setIsLogin(!isLogin);
     dispatch(authActions.setLogin());
   };
 
@@ -40,8 +38,6 @@ const LoginForm = () => {
       confirmPassword.length > 0 &&
       confirmPassword !== password
     ) {
-      console.log("hii");
-      //   alert("Password doesn't match");
       toast.error("Password doesn't match", {
         position: "top-right",
         theme: "colored",
@@ -78,7 +74,7 @@ const LoginForm = () => {
           console.log(data);
           if (!data.registered && !isLogin) {
             console.log("User has successfully signed up");
-            // dispatch(authActions.login(data));
+
             dispatch(authActions.setLogin());
 
             toast.success("Welcome to MailVerse", {
@@ -93,9 +89,6 @@ const LoginForm = () => {
 
             dispatch(authActions.login(data));
           }
-          // authCtx.login(data.idToken);
-
-          // history.replace("/profile");
         } else {
           const data = await res.json();
 

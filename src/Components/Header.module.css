@@ -1,0 +1,49 @@
+.header {
+  display: grid;
+  grid-template-columns: 250px auto 200px;
+  height: 60px;
+  align-items: center;
+  border-bottom: 1px solid whitesmoke;
+  padding: 10px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-image {
+  height: 42px;
+  width: 200px;
+}
+
+.header-middle {
+  display: flex;
+  flex: 0.8;
+}
+
+.search-mail {
+  background-color: #eaf1fb;
+  border-radius: 10px;
+  display: flex;
+  flex: 0.8;
+}
+
+.header-middle input {
+  border: 0;
+  background: transparent;
+  outline: 0;
+  flex: 1;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right div {
+  height: 30px;
+  width: 30px;
+}
