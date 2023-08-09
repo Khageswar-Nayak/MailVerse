@@ -21,6 +21,11 @@ const Sidebar = () => {
   const countReceiveEmails = useSelector(
     (state) => state.receiveEmail.countReceiveEmails
   );
+
+  const countTrashEmails = useSelector(
+    (state) => state.trashEmail.countTrashEmails
+  );
+
   const activeButton = useSelector((state) => state.sidebar.activeButton);
 
   const handleButtonClick = (buttonName) => {
@@ -73,13 +78,14 @@ const Sidebar = () => {
         isactive={activeButton === "drafts"}
         onClick={() => handleButtonClick("drafts")}
       />
-      <SidebarOptions
-        Icon={DeleteIcon}
-        title={"Trash"}
-        number={23}
-        isactive={activeButton === "trash"}
-        onClick={() => handleButtonClick("trash")}
-      />
+      <Link to="/trash" onClick={() => handleButtonClick("trash")}>
+        <SidebarOptions
+          Icon={DeleteIcon}
+          title={"Trash"}
+          number={countTrashEmails}
+          isactive={activeButton === "trash"}
+        />
+      </Link>
     </div>
   );
 };

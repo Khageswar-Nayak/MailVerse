@@ -6,6 +6,7 @@ import Compose from "./Pages/Compose";
 import Sent from "./Pages/Sent";
 import SentEmailDetails from "./Components/SentEmailDetails";
 import ReceiveEmailDetails from "./Components/ReceiveEmailDetails";
+import Trash from "./Pages/Trash";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/compose" element={<Compose />} />
         <Route path="/sent" element={<Sent />} />
+        <Route path="/trash" element={<Trash />} />
         <Route path="/sentemaildetails" element={<SentEmailDetails />} />
         <Route path="/receiveEmaildetails" element={<ReceiveEmailDetails />} />
       </Routes>

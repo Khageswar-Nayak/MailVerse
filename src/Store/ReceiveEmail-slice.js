@@ -13,7 +13,7 @@ const ReceiveEmailSlice = createSlice({
     setReceiveEmails(state, action) {
       state.receiveEmails = action.payload;
       let unreadMessage = 0;
-      action.payload.map((email) => {
+      action.payload.forEach((email) => {
         if (!email.read) {
           unreadMessage++;
         }
@@ -26,6 +26,9 @@ const ReceiveEmailSlice = createSlice({
       if (state.countReceiveEmails !== 0) {
         state.countReceiveEmails = Number(state.countReceiveEmails) - 1;
       }
+    },
+    removeReceiveEmail(state, action) {
+      state.receiveEmails = action.payload;
     },
     setSelectedEmail(state, action) {
       state.selectedReceiveEmail = action.payload;

@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
 import Layout from "../Layout/Layout";
-import SentEmails from "../Components/SentEmails";
 import { useSelector, useDispatch } from "react-redux";
-import { sentEmailActions } from "../Store/sentEmail-slice";
+import TrashEmails from "../Components/TrashEmails";
+import { trashEmailActions } from "../Store/TrashEmail-slice";
 
-const Sent = () => {
+const Trash = () => {
   const dispatch = useDispatch();
-  const sentEmails = useSelector((state) => state.sentEmail.sentEmails);
+  const trashEmails = useSelector((state) => state.trashEmail.trashEmails);
   const userEmail = useSelector((state) => state.auth.email);
   const modifiedUserEmail = userEmail.replace("@", "").replace(".", "");
 
-  const fetchEmailHandler = async () => {
+  const fetchTrashEmailsHandler = async () => {
     try {
-      const getEmails = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}.json`
+      const getTrashEmails = await fetch(
+        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`
       );
 
-      const data = await getEmails.json();
-      console.log(data);
-      const loadedEmails = [];
+      const data = await getTrashEmails.json();
+      //   console.log(data);
+      const loadedTrashEmails = [];
       for (const key in data) {
         console.log("inside data", data[key]);
-        loadedEmails.unshift({
+        loadedTrashEmails.unshift({
           id: key,
-          receiveEmailId: data[key].receiveEmailId,
+          sentORreceive: data[key].sentORreceive,
+          emailId: data[key].emailId,
           subject: data[key].subject,
           message: data[key].message,
           time: data[key].time,
@@ -32,17 +33,16 @@ const Sent = () => {
           year: data[key].year,
         });
       }
-      console.log(loadedEmails);
-      dispatch(sentEmailActions.setSentEmails(loadedEmails));
+
+      dispatch(trashEmailActions.setTrashEmails(loadedTrashEmails));
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchEmailHandler();
+    fetchTrashEmailsHandler();
   }, []);
-  // console.log(emails);
   return (
     <Layout>
       <h2
@@ -54,13 +54,14 @@ const Sent = () => {
           paddingBottom: "5px",
         }}
       >
-        Sent Emails
+        Trash Emails
       </h2>
-      {sentEmails.map((email) => (
-        <SentEmails
+      {trashEmails.map((email) => (
+        <TrashEmails
           key={email.id}
           id={email.id}
-          receiveEmailId={email.receiveEmailId}
+          sentORreceive={email.sentORreceive}
+          emailId={email.emailId}
           subject={email.subject}
           message={email.message}
           time={email.time}
@@ -73,4 +74,4 @@ const Sent = () => {
   );
 };
 
-export default Sent;
+export default Trash;

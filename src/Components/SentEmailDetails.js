@@ -50,7 +50,7 @@ const SentEmailDetails = () => {
               <Avatar />
             </IconButton>
             <h4>{selectedSentEmail.subject}</h4>
-            <p>{selectedSentEmail.receiveEmailId}</p>
+            <p>{selectedSentEmail.emailId}</p>
           </div>
           <div className={classes["emailDetails-middleHeaderRight"]}>
             <p>
