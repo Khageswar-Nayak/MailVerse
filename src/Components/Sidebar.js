@@ -15,7 +15,9 @@ import { sidebarButtonActions } from "../Store/Sidebar-slice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const countEmails = useSelector((state) => state.mail.countEmails);
+  const countsentEmails = useSelector(
+    (state) => state.sentEmail.countsentEmails
+  );
   const countReceiveEmails = useSelector(
     (state) => state.receiveMail.countReceiveEmails
   );
@@ -23,10 +25,11 @@ const Sidebar = () => {
 
   const handleButtonClick = (buttonName) => {
     dispatch(sidebarButtonActions.setActiveButton(buttonName));
+    localStorage.setItem("activeButton", buttonName);
   };
   return (
     <div className={classes.sidebar}>
-      <Link to="/compose">
+      <Link to="/compose" onClick={() => handleButtonClick("none")}>
         <Button startIcon={<CreateIcon />} className={classes["compose-btn"]}>
           Compose
         </Button>
@@ -58,7 +61,7 @@ const Sidebar = () => {
         <SidebarOptions
           Icon={SendIcon}
           title={"Sent"}
-          number={countEmails}
+          number={countsentEmails}
           isactive={activeButton === "sent"}
         />
       </Link>

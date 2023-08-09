@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/Auth-slice";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,9 @@ const Header = () => {
     dispatch(authActions.logout());
     navigate("/");
     dispatch(sidebarButtonActions.setActiveButton("inbox"));
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("email");
+    localStorage.removeItem("activeButton");
   };
   return (
     <div className={classes.header}>
@@ -37,17 +41,24 @@ const Header = () => {
         </div>
       </div>
       <div className={classes["header-right"]}>
-        <IconButton>
+        <IconButton title="Help">
           <HelpOutlineIcon />
         </IconButton>
-        <IconButton>
+        <IconButton title="Settings">
           <SettingsIcon />
         </IconButton>
-        <IconButton>
+        <IconButton title="Apps">
           <AppsIcon />
         </IconButton>
-        <IconButton onClick={logoutHandler}>
-          <Avatar />
+        <Avatar />
+        <IconButton onClick={logoutHandler} title="Logout">
+          <PowerSettingsNewIcon
+            style={{
+              color: "#da2a2a",
+              height: "30px",
+              width: "30px",
+            }}
+          />
         </IconButton>
       </div>
     </div>

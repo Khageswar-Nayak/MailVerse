@@ -52,7 +52,7 @@ const Home = () => {
           paddingBottom: "5px",
         }}
       >
-        Received messages
+        Received Emails
       </h2>
       {ReceiveMails.map((mail) => (
         <ReceiveEmails

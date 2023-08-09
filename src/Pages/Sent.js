@@ -2,11 +2,11 @@ import React, { useCallback, useEffect } from "react";
 import Layout from "../Layout/Layout";
 import SentEmails from "../Components/SentEmails";
 import { useSelector, useDispatch } from "react-redux";
-import { mailActions } from "../Store/MailData-slice";
+import { sentEmailActions } from "../Store/sentEmail-slice";
 
 const Sent = () => {
   const dispatch = useDispatch();
-  const emails = useSelector((state) => state.mail.emails);
+  const sentEmails = useSelector((state) => state.sentEmail.sentEmails);
   const userEmail = useSelector((state) => state.auth.email);
   const modifiedUserEmail = userEmail.replace("@", "").replace(".", "");
 
@@ -30,7 +30,7 @@ const Sent = () => {
         });
       }
       console.log(loadedEmails);
-      dispatch(mailActions.setMails(loadedEmails));
+      dispatch(sentEmailActions.setSentEmails(loadedEmails));
     } catch (error) {
       console.log(error);
     }
@@ -51,15 +51,15 @@ const Sent = () => {
           paddingBottom: "5px",
         }}
       >
-        Sent messages
+        Sent Emails
       </h2>
-      {emails.map((mail) => (
+      {sentEmails.map((email) => (
         <SentEmails
-          key={mail.id}
-          receiveEmailId={mail.receiveEmailId}
-          subject={mail.subject}
-          message={mail.message}
-          time={mail.time}
+          key={email.id}
+          receiveEmailId={email.receiveEmailId}
+          subject={email.subject}
+          message={email.message}
+          time={email.time}
         />
       ))}
     </Layout>

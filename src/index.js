@@ -6,14 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./Store/Store";
 import { authActions } from "../src/Store/Auth-slice";
+import { sidebarButtonActions } from "../src/Store/Sidebar-slice";
+
 const storedIdToken = localStorage.getItem("idToken");
 const storedEmail = localStorage.getItem("email");
-
+const storedactiveButton = localStorage.getItem("activeButton");
 // Dispatch login action if data is present
 if (storedIdToken && storedEmail) {
   store.dispatch(
     authActions.login({ idToken: storedIdToken, email: storedEmail })
   );
+}
+
+if (storedactiveButton) {
+  store.dispatch(sidebarButtonActions.setActiveButton(storedactiveButton));
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

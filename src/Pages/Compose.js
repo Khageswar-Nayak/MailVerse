@@ -5,7 +5,7 @@ import Layout from "../Layout/Layout";
 import classes from "./Compose.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { mailActions } from "../Store/MailData-slice";
+import { sentEmailActions } from "../Store/sentEmail-slice";
 
 const Compose = () => {
   const userEmail = useSelector((state) => state.auth.email);
@@ -78,7 +78,7 @@ const Compose = () => {
         const data = await sentMail.json();
         const updatedEmails = { ...obj, id: data.name };
         // console.log(updatEexpense);
-        dispatch(mailActions.addMails(updatedEmails));
+        dispatch(sentEmailActions.addSentEmails(updatedEmails));
         toast.success("Mail sent successfully", {
           position: "top-right",
           theme: "colored",
