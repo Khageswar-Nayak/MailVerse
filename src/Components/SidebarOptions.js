@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./SidebarOptions.module.css";
 
-const SidebarOptions = ({ Icon, title, number, isactive }) => {
+const SidebarOptions = ({ Icon, title, number, msg, isactive }) => {
   return (
     <div
       className={`${classes.sidebaroptions} ${
@@ -10,7 +10,9 @@ const SidebarOptions = ({ Icon, title, number, isactive }) => {
     >
       <Icon />
       <h4>{title}</h4>
-      <p>{number}</p>
+      <p>
+        {msg} {number}
+      </p>
     </div>
   );
 };

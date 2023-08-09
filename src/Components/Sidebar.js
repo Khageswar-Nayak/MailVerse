@@ -15,11 +15,11 @@ import { sidebarButtonActions } from "../Store/Sidebar-slice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const countsentEmails = useSelector(
-    (state) => state.sentEmail.countsentEmails
+  const countSentEmails = useSelector(
+    (state) => state.sentEmail.countSentEmails
   );
   const countReceiveEmails = useSelector(
-    (state) => state.receiveMail.countReceiveEmails
+    (state) => state.receiveEmail.countReceiveEmails
   );
   const activeButton = useSelector((state) => state.sidebar.activeButton);
 
@@ -39,6 +39,7 @@ const Sidebar = () => {
           Icon={InboxIcon}
           title={"Inbox"}
           number={countReceiveEmails}
+          msg={"unread message"}
           isactive={activeButton === "inbox"}
         />
       </Link>
@@ -61,7 +62,7 @@ const Sidebar = () => {
         <SidebarOptions
           Icon={SendIcon}
           title={"Sent"}
-          number={countsentEmails}
+          number={countSentEmails}
           isactive={activeButton === "sent"}
         />
       </Link>

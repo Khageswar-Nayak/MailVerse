@@ -2,11 +2,13 @@ import React, { useCallback, useEffect } from "react";
 import Layout from "../Layout/Layout";
 import ReceiveEmails from "../Components/ReceiveEmails";
 import { useSelector, useDispatch } from "react-redux";
-import { ReceiveMailActions } from "../Store/ReceiveMail-slice";
+import { ReceiveEmailActions } from "../Store/ReceiveEmail-slice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const ReceiveMails = useSelector((state) => state.receiveMail.ReceiveMails);
+  const receiveEmails = useSelector(
+    (state) => state.receiveEmail.receiveEmails
+  );
   const userEmail = useSelector((state) => state.auth.email);
   const modifiedUserEmail = userEmail.replace("@", "").replace(".", "");
 
@@ -17,10 +19,10 @@ const Home = () => {
       );
 
       const data = await getEmails.json();
-      console.log(data);
+      // console.log(data);
       const loadedEmails = [];
       for (const key in data) {
-        console.log("inside data", data[key]);
+        // console.log("inside data", data[key]);
         loadedEmails.unshift({
           id: key,
           sentEmailId: data[key].sentEmailId,
@@ -28,10 +30,13 @@ const Home = () => {
           message: data[key].message,
           time: data[key].time,
           read: data[key].read,
+          day: data[key].day,
+          month: data[key].month,
+          year: data[key].year,
         });
       }
       // console.log(loadedEmails);
-      dispatch(ReceiveMailActions.setReceiveMails(loadedEmails));
+      dispatch(ReceiveEmailActions.setReceiveEmails(loadedEmails));
     } catch (error) {
       console.log(error);
     }
@@ -54,14 +59,18 @@ const Home = () => {
       >
         Received Emails
       </h2>
-      {ReceiveMails.map((mail) => (
+      {receiveEmails.map((email) => (
         <ReceiveEmails
-          key={mail.id}
-          sentEmailId={mail.sentEmailId}
-          subject={mail.subject}
-          message={mail.message}
-          time={mail.time}
-          read={mail.read}
+          key={email.id}
+          id={email.id}
+          sentEmailId={email.sentEmailId}
+          subject={email.subject}
+          message={email.message}
+          time={email.time}
+          read={email.read}
+          day={email.day}
+          month={email.month}
+          year={email.year}
         />
       ))}
     </Layout>

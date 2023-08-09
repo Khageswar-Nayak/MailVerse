@@ -29,7 +29,7 @@
 .receiveEmails-middle {
   display: flex;
   align-items: center;
-  flex: 90%;
+  flex: 40%;
 }
 
 .receiveEmails-middle svg {
@@ -48,7 +48,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0px 20px;
-  max-width: 550px;
+  max-width: 500px;
 }
 
 .receiveEmails-right {

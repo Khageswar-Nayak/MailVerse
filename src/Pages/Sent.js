@@ -27,6 +27,9 @@ const Sent = () => {
           subject: data[key].subject,
           message: data[key].message,
           time: data[key].time,
+          day: data[key].day,
+          month: data[key].month,
+          year: data[key].year,
         });
       }
       console.log(loadedEmails);
@@ -60,6 +63,9 @@ const Sent = () => {
           subject={email.subject}
           message={email.message}
           time={email.time}
+          day={email.day}
+          month={email.month}
+          year={email.year}
         />
       ))}
     </Layout>

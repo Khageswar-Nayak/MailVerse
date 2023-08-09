@@ -11,24 +11,27 @@ const SentEmails = (props) => {
   const dispatch = useDispatch();
 
   const openSentEmails = () => {
-    navigate("/sentemaildetail");
+    navigate("/sentemaildetails");
     dispatch(
       sentEmailActions.setSelectedEmail({
         receiveEmailId: props.receiveEmailId,
         subject: props.subject,
         message: props.message,
         time: props.time,
+        day: props.day,
+        month: props.month,
+        year: props.year,
       })
     );
   };
 
   return (
-    <div className={classes.sentEmails} onClick={openSentEmails}>
+    <div className={classes.sentEmails}>
       <div className={classes["sentEmails-left"]}>
         <Checkbox />
-        <h4>To : {props.receiveEmailId}</h4>
+        <h4 onClick={openSentEmails}>To : {props.receiveEmailId}</h4>
       </div>
-      <div className={classes["sentEmails-middle"]}>
+      <div className={classes["sentEmails-middle"]} onClick={openSentEmails}>
         <StarBorderIcon />
 
         <div className={classes["sentEmails-middle-msg"]}>
@@ -38,7 +41,9 @@ const SentEmails = (props) => {
         </div>
       </div>
       <div className={classes["sentEmails-right"]}>
-        <p>{props.time}</p>
+        <p>
+          {props.day}/{props.month}/{props.year} {props.time}
+        </p>
       </div>
     </div>
   );

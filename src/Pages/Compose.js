@@ -60,11 +60,14 @@ const Compose = () => {
       subject: subject,
       message: sanitizedBody,
       time: new Date().toLocaleTimeString(),
+      day: new Date().getDate(),
+      month: new Date().getMonth() + 1,
+      year: new Date().getFullYear(),
       read: false,
     };
     // console.log(obj);
     try {
-      const sentMail = await fetch(
+      const sentEmail = await fetch(
         `https://mailverse-a6ae2-default-rtdb.firebaseio.com/sentEmails/${sentEmailId}.json`,
         {
           method: "POST",
@@ -74,8 +77,8 @@ const Compose = () => {
           },
         }
       );
-      if (sentMail.ok) {
-        const data = await sentMail.json();
+      if (sentEmail.ok) {
+        const data = await sentEmail.json();
         const updatedEmails = { ...obj, id: data.name };
         // console.log(updatEexpense);
         dispatch(sentEmailActions.addSentEmails(updatedEmails));
@@ -86,7 +89,7 @@ const Compose = () => {
         });
       }
 
-      const receiveMail = await fetch(
+      const receiveEmail = await fetch(
         `https://mailverse-a6ae2-default-rtdb.firebaseio.com/receiveEmails/${receiveEmailId}.json`,
         {
           method: "POST",

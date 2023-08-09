@@ -12,25 +12,25 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const SentEmailDetails = () => {
-  const selectedSentEmail = useSelector(
-    (state) => state.sentEmail.selectedSentEmail
+const ReceiveEmailDetails = () => {
+  const selectedReceiveEmail = useSelector(
+    (state) => state.receiveEmail.selectedReceiveEmail
   );
   return (
     <Layout>
       <div className={classes.emailDetails}>
-        <Link to="/sent">
+        <Link to="/home">
           <IconButton>
             <KeyboardBackspaceIcon />
           </IconButton>
         </Link>
         <p>Back</p>
-        <h2 className={classes.heading}>Sent Email Details</h2>
+        <h2 className={classes.heading}>Receive Email Details</h2>
       </div>
       <div className={classes["emailDetails-message"]}>
         <div className={classes["emailDetails-header"]}>
           <div className={classes["emailDetails-headerLeft"]}>
-            <h4>{selectedSentEmail.subject}</h4>
+            <h4>{selectedReceiveEmail.subject}</h4>
             <IconButton>
               <LabelImportantIcon />
             </IconButton>
@@ -49,13 +49,13 @@ const SentEmailDetails = () => {
             <IconButton>
               <Avatar />
             </IconButton>
-            <h4>{selectedSentEmail.subject}</h4>
-            <p>{selectedSentEmail.receiveEmailId}</p>
+            <h4>{selectedReceiveEmail.subject}</h4>
+            <p>{selectedReceiveEmail.sentEmailId}</p>
           </div>
           <div className={classes["emailDetails-middleHeaderRight"]}>
             <p>
-              {selectedSentEmail.day}/{selectedSentEmail.month}/
-              {selectedSentEmail.year} {selectedSentEmail.time}
+              {selectedReceiveEmail.day}/{selectedReceiveEmail.month}/
+              {selectedReceiveEmail.year} {selectedReceiveEmail.time}
             </p>
             <IconButton>
               <StarIcon />
@@ -69,11 +69,11 @@ const SentEmailDetails = () => {
           </div>
         </div>
         <div className={classes["emailDetails-body"]}>
-          <p>{selectedSentEmail.message}</p>
+          <p>{selectedReceiveEmail.message}</p>
         </div>
       </div>
     </Layout>
   );
 };
 
-export default SentEmailDetails;
+export default ReceiveEmailDetails;
