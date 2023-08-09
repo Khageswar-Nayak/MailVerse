@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Layout from "../Layout/Layout";
 import ReceiveEmails from "../Components/ReceiveEmails";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,17 +12,15 @@ const Home = () => {
   const userEmail = useSelector((state) => state.auth.email);
   const modifiedUserEmail = userEmail.replace("@", "").replace(".", "");
 
-  const fetchEmailHandler = async () => {
+  const fetchEmailHandler = useCallback(async () => {
     try {
       const getEmails = await fetch(
         `https://mailverse-a6ae2-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}.json`
       );
 
       const data = await getEmails.json();
-      // console.log(data);
       const loadedEmails = [];
       for (const key in data) {
-        // console.log("inside data", data[key]);
         loadedEmails.unshift({
           id: key,
           sentEmailId: data[key].sentEmailId,
@@ -35,17 +33,22 @@ const Home = () => {
           year: data[key].year,
         });
       }
-      // console.log(loadedEmails);
       dispatch(ReceiveEmailActions.setReceiveEmails(loadedEmails));
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [dispatch, modifiedUserEmail]);
 
   useEffect(() => {
     fetchEmailHandler();
-  }, []);
-  // console.log(emails);
+
+    // Set up interval to fetch emails every 2 seconds
+    const intervalId = setInterval(fetchEmailHandler, 2000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [fetchEmailHandler]);
+
   return (
     <Layout>
       <h2
