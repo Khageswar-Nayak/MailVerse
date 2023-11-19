@@ -33,6 +33,10 @@ const ReceiveEmailSlice = createSlice({
     setSelectedEmail(state, action) {
       state.selectedReceiveEmail = action.payload;
     },
+    deleteAllReceiveEmails(state) {
+      state.receiveEmails = [];
+      state.countReceiveEmails = 0;
+    },
   },
 });
 

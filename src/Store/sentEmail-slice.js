@@ -25,6 +25,10 @@ const sentEmailSlice = createSlice({
       state.sentEmails = action.payload;
       state.countSentEmails--;
     },
+    deleteAllSentEmails(state) {
+      state.sentEmails = [];
+      state.countSentEmails = 0;
+    },
   },
 });
 

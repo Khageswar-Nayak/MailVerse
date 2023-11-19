@@ -19,3 +19,13 @@
   font-weight: 600 !important;
   background-color: #c2e7ff !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .compose-text {
+    display: none;
+  }
+
+  .compose-btn span {
+    padding-left: 10px;
+  }
+}

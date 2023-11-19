@@ -7,6 +7,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
+import MenuIcon from "@mui/icons-material/Menu";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useDispatch } from "react-redux";
 import { authActions } from "../Store/Auth-slice";
@@ -61,6 +62,9 @@ const Header = () => {
           />
         </IconButton>
       </div>
+      <IconButton className={classes["menu-icon"]} title="Menu">
+        <MenuIcon />
+      </IconButton>
     </div>
   );
 };

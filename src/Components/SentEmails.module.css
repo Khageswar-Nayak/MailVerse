@@ -48,7 +48,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0px 20px;
-  max-width: 500px;
+  max-width: 450px;
 }
 
 .sentEmails-right {

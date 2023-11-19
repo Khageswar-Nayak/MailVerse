@@ -17,7 +17,10 @@ const trashEmailSlice = createSlice({
       state.trashEmails = action.payload;
       state.countTrashEmails = action.payload.length;
     },
-    deleteTrashEmail() {},
+    deleteTrashEmail(state) {
+      state.trashEmails = [];
+      state.countTrashEmails = 0;
+    },
   },
 });
 

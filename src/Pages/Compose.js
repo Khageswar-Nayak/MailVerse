@@ -65,10 +65,10 @@ const Compose = () => {
       year: new Date().getFullYear(),
       read: false,
     };
-    // console.log(obj);
+    console.log(obj);
     try {
       const sentEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/sentEmails/${sentEmailId}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${sentEmailId}.json`,
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -90,7 +90,7 @@ const Compose = () => {
       }
 
       const receiveEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/receiveEmails/${receiveEmailId}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/receiveEmails/${receiveEmailId}.json`,
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -116,6 +116,7 @@ const Compose = () => {
           type="email"
           value={email}
           onChange={handleEmailChange}
+          placeholder="enter email"
         />
 
         <label>Subject:</label>

@@ -25,7 +25,7 @@ const ReceiveEmailDetails = () => {
           </IconButton>
         </Link>
         <p>Back</p>
-        <h2 className={classes.heading}>Receive Email Details</h2>
+        <h2 className={classes.heading}>Received Email Details</h2>
       </div>
       <div className={classes["emailDetails-message"]}>
         <div className={classes["emailDetails-header"]}>

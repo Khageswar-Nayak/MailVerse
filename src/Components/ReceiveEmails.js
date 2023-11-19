@@ -35,7 +35,7 @@ const ReceiveEmails = (props) => {
   const addToTrashHandler = async () => {
     try {
       const deleteEmailFromReceiveEmails = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "DELETE",
         }
@@ -48,7 +48,7 @@ const ReceiveEmails = (props) => {
       }
 
       const trashEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
         {
           method: "POST",
           body: JSON.stringify(receiveEmailDetails),
@@ -84,7 +84,7 @@ const ReceiveEmails = (props) => {
     };
     try {
       const updateEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "PUT",
           body: JSON.stringify(updatedEmail),
@@ -111,7 +111,10 @@ const ReceiveEmails = (props) => {
     <>
       <div className={classes.receiveEmails}>
         <div className={classes["receiveEmails-left"]}>
-          <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+          <Checkbox
+            checked={props.isChecked ? true : isChecked}
+            onChange={handleCheckboxChange}
+          />
           {!props.read && (
             <Badge
               color="primary"
@@ -137,7 +140,7 @@ const ReceiveEmails = (props) => {
           <p>
             {props.day}/{props.month}/{props.year} {props.time}
           </p>
-          {isChecked && (
+          {isChecked && !props.isChecked && (
             <IconButton title="add to Trash" onClick={addToTrashHandler}>
               <DeleteIcon />
             </IconButton>

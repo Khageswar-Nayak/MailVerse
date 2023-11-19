@@ -21,7 +21,7 @@ const TrashEmails = (props) => {
   const emailDeleteHandler = async () => {
     try {
       const deleteTrashEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "DELETE",
         }
@@ -45,7 +45,10 @@ const TrashEmails = (props) => {
   return (
     <div className={classes.sentEmails}>
       <div className={classes["sentEmails-left"]}>
-        <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+        <Checkbox
+          checked={props.isChecked ? true : isChecked}
+          onChange={handleCheckboxChange}
+        />
         <h4>
           {props.sentORreceive} : {props.emailId}
         </h4>
@@ -63,7 +66,7 @@ const TrashEmails = (props) => {
         <p>
           {props.day}/{props.month}/{props.year} {props.time}
         </p>
-        {isChecked && (
+        {isChecked && !props.isChecked && (
           <IconButton title="delete Email" onClick={emailDeleteHandler}>
             <DeleteIcon />
           </IconButton>

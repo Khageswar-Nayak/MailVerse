@@ -41,7 +41,7 @@ const SentEmails = (props) => {
   const addToTrashHandler = async () => {
     try {
       const deleteEmailFromSentEmails = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "DELETE",
         }
@@ -54,7 +54,7 @@ const SentEmails = (props) => {
       }
 
       const trashEmail = await fetch(
-        `https://mailverse-a6ae2-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
+        `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
         {
           method: "POST",
           body: JSON.stringify(emailDetails),
@@ -73,11 +73,6 @@ const SentEmails = (props) => {
         const data = await trashEmail.json();
         const updatedTrashEmail = { ...emailDetails, id: data.name };
         dispatch(trashEmailActions.addToTrashEmails(updatedTrashEmail));
-        toast.success("Added to Trash", {
-          position: "top-right",
-          theme: "colored",
-          autoClose: 3000,
-        });
       }
     } catch (err) {
       console.log(err);
@@ -87,7 +82,10 @@ const SentEmails = (props) => {
   return (
     <div className={classes.sentEmails}>
       <div className={classes["sentEmails-left"]}>
-        <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
+        <Checkbox
+          checked={props.isChecked ? true : isChecked}
+          onChange={handleCheckboxChange}
+        />
         <h4 onClick={openSentEmails}>To : {props.receiveEmailId}</h4>
       </div>
       <div className={classes["sentEmails-middle"]} onClick={openSentEmails}>
@@ -103,7 +101,7 @@ const SentEmails = (props) => {
         <p>
           {props.day}/{props.month}/{props.year} {props.time}
         </p>
-        {isChecked && (
+        {isChecked && !props.isChecked && (
           <IconButton title="add to Trash" onClick={addToTrashHandler}>
             <DeleteIcon />
           </IconButton>

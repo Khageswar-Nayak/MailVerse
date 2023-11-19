@@ -4,6 +4,7 @@ import sentEmailReducer from "./sentEmail-slice";
 import activeReducer from "./Sidebar-slice";
 import ReceiveEmailReducer from "./ReceiveEmail-slice";
 import TrashEmailReducer from "./TrashEmail-slice";
+import TopCheckBoxReducer from "./TopCheckBox-slice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     sidebar: activeReducer,
     receiveEmail: ReceiveEmailReducer,
     trashEmail: TrashEmailReducer,
+    topCheckBox: TopCheckBoxReducer,
   },
 });
 

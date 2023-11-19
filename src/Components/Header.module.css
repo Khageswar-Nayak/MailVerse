@@ -47,3 +47,42 @@
   height: 30px;
   width: 30px;
 }
+
+.menu-icon {
+  display: none;
+}
+
+/* Existing styles... */
+
+@media only screen and (max-width: 768px) {
+  .header {
+    /* grid-template-columns: 70px auto 70px; Adjust column widths for mobile view */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    /* justify-content: center; Center the logo in mobile view */
+  }
+
+  .header-image {
+    /* width: 100%; Make the logo fill the width in mobile view */
+  }
+
+  .header-middle {
+    display: none; /* Hide the search bar in mobile view */
+  }
+
+  .header-right {
+    /* justify-content: flex-end; Align icons to the right in mobile view */
+    display: none;
+  }
+
+  .menu-icon {
+    display: inline-block; /* Show the menu icon in mobile view */
+  }
+  .header-image {
+    /* height: 30px; */
+    /* width: 150px; */
+  }
+}

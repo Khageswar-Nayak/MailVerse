@@ -15,6 +15,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material"; // Import the icons for the eye toggle
 
 const LoginForm = () => {
+  //   const [isLogin, setIsLogin] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = useSelector((state) => state.auth.isLogin);
@@ -24,6 +25,7 @@ const LoginForm = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const toggleForm = () => {
+    // setIsLogin(!isLogin);
     dispatch(authActions.setLogin());
   };
 
@@ -38,6 +40,8 @@ const LoginForm = () => {
       confirmPassword.length > 0 &&
       confirmPassword !== password
     ) {
+      console.log("hii");
+      //   alert("Password doesn't match");
       toast.error("Password doesn't match", {
         position: "top-right",
         theme: "colored",
@@ -50,10 +54,10 @@ const LoginForm = () => {
       let url;
       if (isLogin) {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB1sA6SXGk5i3U0xLw7A8ZVQiLhLKyRZvI";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBxAWssAULFrTvfZsgyRbbaKQjgb-l5H1s";
       } else {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB1sA6SXGk5i3U0xLw7A8ZVQiLhLKyRZvI";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBxAWssAULFrTvfZsgyRbbaKQjgb-l5H1s";
       }
 
       try {
@@ -74,10 +78,10 @@ const LoginForm = () => {
           console.log(data);
           if (!data.registered && !isLogin) {
             console.log("User has successfully signed up");
-
+            // dispatch(authActions.login(data));
             dispatch(authActions.setLogin());
 
-            toast.success("Welcome to MailVerse", {
+            toast.success("Welcome to MailVerse, Please Login", {
               position: "top-right",
               theme: "colored",
               autoClose: 3000,
@@ -85,10 +89,13 @@ const LoginForm = () => {
           }
 
           if (data.registered) {
-            navigate("/home");
-
             dispatch(authActions.login(data));
+
+            navigate("/home");
           }
+          // authCtx.login(data.idToken);
+
+          // history.replace("/profile");
         } else {
           const data = await res.json();
 
@@ -135,6 +142,7 @@ const LoginForm = () => {
               fullWidth
               margin="normal"
               required
+              value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
             <TextField
@@ -144,6 +152,7 @@ const LoginForm = () => {
               fullWidth
               margin="normal"
               required
+              value={password}
               onChange={(event) => setPassword(event.target.value)}
               // Add `InputProps` with the eye icon toggle
               InputProps={{
@@ -162,6 +171,7 @@ const LoginForm = () => {
                 fullWidth
                 margin="normal"
                 required
+                value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
               />
             )}

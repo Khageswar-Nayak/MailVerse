@@ -12,6 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { sidebarButtonActions } from "../Store/Sidebar-slice";
+import { TopCheckBoxActions } from "../Store/TopCheckBox-slice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -27,16 +28,20 @@ const Sidebar = () => {
   );
 
   const activeButton = useSelector((state) => state.sidebar.activeButton);
+  const isChecked = useSelector((state) => state.topCheckBox.isChecked);
 
   const handleButtonClick = (buttonName) => {
     dispatch(sidebarButtonActions.setActiveButton(buttonName));
     localStorage.setItem("activeButton", buttonName);
+    if (isChecked) {
+      dispatch(TopCheckBoxActions.TopCheckBoxChange());
+    }
   };
   return (
     <div className={classes.sidebar}>
       <Link to="/compose" onClick={() => handleButtonClick("none")}>
         <Button startIcon={<CreateIcon />} className={classes["compose-btn"]}>
-          Compose
+          <span className={classes["compose-text"]}>Compose</span>
         </Button>
       </Link>
       <Link to="/home" onClick={() => handleButtonClick("inbox")}>

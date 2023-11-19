@@ -1,0 +1,46 @@
+.sentEmail {
+  display: grid;
+  grid-template-columns: 410px auto 200px;
+  height: 60px;
+  align-items: center;
+  border-bottom: 2px solid #c2e7ff;
+  padding-top: 27px;
+}
+
+.sentEmail-left {
+  display: flex;
+  align-items: center;
+}
+
+.sentEmail-left svg {
+  height: 20px;
+  width: 20px;
+}
+
+.sentEmail-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sentEmail-right svg {
+  height: 20px;
+  width: 20px;
+}
+
+.emptyMessage {
+  text-align: center;
+  margin: 20px 0;
+  color: #888;
+  font-size: 3rem;
+}
+
+.noMails {
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.noMails a {
+  color: blue;
+}
