@@ -21,7 +21,7 @@ const TrashEmails = (props) => {
   const emailDeleteHandler = async () => {
     try {
       const deleteTrashEmail = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "DELETE",
         }

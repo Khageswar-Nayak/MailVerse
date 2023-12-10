@@ -41,7 +41,7 @@ const SentEmails = (props) => {
   const addToTrashHandler = async () => {
     try {
       const deleteEmailFromSentEmails = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}/${props.id}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}/${props.id}.json`,
         {
           method: "DELETE",
         }
@@ -54,7 +54,7 @@ const SentEmails = (props) => {
       }
 
       const trashEmail = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
         {
           method: "POST",
           body: JSON.stringify(emailDetails),
@@ -107,6 +107,7 @@ const SentEmails = (props) => {
           </IconButton>
         )}
       </div>
+
       <ToastContainer />
     </div>
   );

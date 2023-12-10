@@ -68,7 +68,7 @@ const Compose = () => {
     console.log(obj);
     try {
       const sentEmail = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${sentEmailId}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/sentEmails/${sentEmailId}.json`,
         {
           method: "POST",
           body: JSON.stringify(obj),
@@ -90,7 +90,7 @@ const Compose = () => {
       }
 
       const receiveEmail = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/receiveEmails/${receiveEmailId}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/receiveEmails/${receiveEmailId}.json`,
         {
           method: "POST",
           body: JSON.stringify(obj),

@@ -62,9 +62,9 @@ const Header = () => {
           />
         </IconButton>
       </div>
-      <IconButton className={classes["menu-icon"]} title="Menu">
+      {/* <IconButton className={classes["menu-icon"]} title="Menu">
         <MenuIcon />
-      </IconButton>
+      </IconButton> */}
     </div>
   );
 };

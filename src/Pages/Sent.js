@@ -21,7 +21,7 @@ const Sent = () => {
   const fetchEmailHandler = async () => {
     try {
       const getEmails = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}.json`
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}.json`
       );
 
       const data = await getEmails.json();
@@ -65,7 +65,7 @@ const Sent = () => {
           emailId: email.receiveEmailId,
         };
         const addToTrash = await fetch(
-          `https://mail-verse-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
+          `https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
           {
             method: "POST",
             body: JSON.stringify(updatedEmail),
@@ -77,7 +77,7 @@ const Sent = () => {
       }
 
       const deleteAllSentEmails = await fetch(
-        `https://mail-verse-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}.json`,
+        `https://mail-verse-69a76-default-rtdb.firebaseio.com/sentEmails/${modifiedUserEmail}.json`,
         {
           method: "DELETE",
         }

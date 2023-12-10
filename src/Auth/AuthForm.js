@@ -54,10 +54,10 @@ const LoginForm = () => {
       let url;
       if (isLogin) {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBxAWssAULFrTvfZsgyRbbaKQjgb-l5H1s";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBZtzhY2DxsbdpLYG2fx8xqK8wulY-fKaY";
       } else {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBxAWssAULFrTvfZsgyRbbaKQjgb-l5H1s";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBZtzhY2DxsbdpLYG2fx8xqK8wulY-fKaY";
       }
 
       try {
