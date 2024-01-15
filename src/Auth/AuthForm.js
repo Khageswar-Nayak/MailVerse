@@ -54,10 +54,10 @@ const LoginForm = () => {
       let url;
       if (isLogin) {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBZtzhY2DxsbdpLYG2fx8xqK8wulY-fKaY";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMQWMiiv-JSLU_z6IDKWgrLd84fDWUgD4";
       } else {
         url =
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBZtzhY2DxsbdpLYG2fx8xqK8wulY-fKaY";
+          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMQWMiiv-JSLU_z6IDKWgrLd84fDWUgD4";
       }
 
       try {
@@ -108,6 +108,7 @@ const LoginForm = () => {
           throw new Error(errorMessage);
         }
       } catch (err) {
+        console.log("againSignUp", err);
         toast.error(err.message, {
           position: "top-right",
           theme: "colored",

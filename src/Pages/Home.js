@@ -21,7 +21,7 @@ const Home = () => {
   const fetchEmailHandler = useCallback(async () => {
     try {
       const getEmails = await fetch(
-        `https://mail-verse-69a76-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}.json`
+        `https://mailverse-6fbb8-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}.json`
       );
 
       const data = await getEmails.json();
@@ -72,7 +72,7 @@ const Home = () => {
           emailId: email.sentEmailId,
         };
         const addToTrash = await fetch(
-          `https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
+          `https://mailverse-6fbb8-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`,
           {
             method: "POST",
             body: JSON.stringify(updatedEmail),
@@ -84,7 +84,7 @@ const Home = () => {
       }
 
       const deleteAllSentEmails = await fetch(
-        `https://mail-verse-69a76-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}.json`,
+        `https://mailverse-6fbb8-default-rtdb.firebaseio.com/receiveEmails/${modifiedUserEmail}.json`,
         {
           method: "DELETE",
         }

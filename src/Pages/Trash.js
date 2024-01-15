@@ -21,7 +21,7 @@ const Trash = () => {
   const fetchTrashEmailsHandler = async () => {
     try {
       const getTrashEmails = await fetch(
-        `https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`
+        `https://mailverse-6fbb8-default-rtdb.firebaseio.com/trashEmails/${modifiedUserEmail}.json`
       );
 
       const data = await getTrashEmails.json();
@@ -54,7 +54,7 @@ const Trash = () => {
 
   const trashEmailDeleteHandler = async () => {
     const deleteTrashEmails = await fetch(
-      "https://mail-verse-69a76-default-rtdb.firebaseio.com/trashEmails.json",
+      "https://mailverse-6fbb8-default-rtdb.firebaseio.com/trashEmails.json",
       {
         method: "DELETE",
       }
