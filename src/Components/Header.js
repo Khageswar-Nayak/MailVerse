@@ -36,7 +36,7 @@ const Header = () => {
             <SearchIcon />
           </IconButton>
           <input type="text" placeholder="Search mail" />
-          <IconButton>
+          <IconButton className={classes["dropDown_icon"]}>
             <ExpandMoreIcon />
           </IconButton>
         </div>

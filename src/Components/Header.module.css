@@ -60,4 +60,8 @@
   .header-right {
     display: none;
   }
+
+  .dropDown_icon {
+    display: none;
+  }
 }
